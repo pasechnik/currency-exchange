@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Country {
+  code    String           @id
+  name    String
+  offices ExchangeOffice[]
+}
+
+model ExchangeOffice {
+  id        Int        @id @default(autoincrement())
+  name      String
+  country   String
+  countryId Country    @relation(fields: [country], references: [code])
+  exchanges Exchange[]
+  rates     Rate[]
+}
+
+model Exchange {
+  id               Int            @id @default(autoincrement())
+  from             String
+  to               String
+  ask              Float
+  date             DateTime
+  exchangeOfficeId Int
+  office           ExchangeOffice @relation(fields: [exchangeOfficeId], references: [id])
+}
+
+model Rate {
+  id               Int            @id @default(autoincrement())
+  from             String
+  to               String
+  in               Float
+  out              Float
+  reserve          Float
+  date             DateTime
+  exchangeOfficeId Int
+  office           ExchangeOffice @relation(fields: [exchangeOfficeId], references: [id])
+}

@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: currency-ex-postgres
+    image: postgres:alpine
+    restart: always
+    hostname: postgres
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./sql:/sql
+    ports:
+      - '5432:5432'
+    logging:
+      options:
+        max-size: 16m
+        max-file: 4
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=ceo_database
+
+  pgadmin:
+    container_name: currency-ex-pgadmin
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGADMIN_DEFAULT_EMAIL: admin@postgres.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DISABLE_POSTFIX: 1
+    ports:
+      - '7800:80'
+
+volumes:
+  pg_data:
+
+networks:
+  default:
+    name: direct

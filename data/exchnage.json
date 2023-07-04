@@ -1,0 +1,62 @@
+{
+  "exchange-offices": [
+    {
+      "id": "1",
+      "name": "Exchanger 1",
+      "country": "UKR",
+      "exchanges": [
+        {
+          "from": "EUR",
+          "to": "USD",
+          "ask": "110",
+          "date": "2023-04-24 22:55:33"
+        },
+        {
+          "from": "USD",
+          "to": "UAH",
+          "ask": "400",
+          "date": "2023-04-24 22:55:33"
+        }
+      ],
+      "rates": [
+        {
+          "from": "EUR",
+          "to": "USD",
+          "in": "1.1",
+          "out": "1",
+          "reserve": "120000",
+          "date": "2023-04-24 22:55:33"
+        },
+        {
+          "from": "USD",
+          "to": "UAH",
+          "in": "1",
+          "out": "40",
+          "reserve": "150000",
+          "date": "2023-04-24 22:55:33"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Exchanger 2",
+      "country": "UKR",
+      "rates": [
+        {
+          "from": "AUD",
+          "to": "CAD",
+          "in": "1",
+          "out": "2",
+          "reserve": "150000",
+          "date": "2023-04-24 22:55:33"
+        }
+      ]
+    }
+  ],
+  "countries": [
+    {
+      "code": "UKR",
+      "name": "Ukraine"
+    }
+  ]
+}
